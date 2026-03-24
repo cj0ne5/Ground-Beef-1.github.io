@@ -12,6 +12,7 @@ let CubePaths = false;
 let AteKey = false;
 let Damaged = false;
 let Stick = false;
+let Loop = 0;
 //Declare your other global variables here
 
 
@@ -108,7 +109,7 @@ function UseItem() {
 	if (Key == true){
 		print("\t3-   Maybe it just wants the key, toss it over then hide so either way it won’t see you");
 	}
-	else if (key == false){
+	else if (Key == false){
 		print("\n\tunavailable");
 	}
 
@@ -118,6 +119,8 @@ function UseItem() {
 	else if (Backpack == false){
 		print("\n\tUnavailable");
 	}
+
+
 	if (Stick == true){
 	print("\t5-   This stick looks sharp enough to spear it through the head, if you have good aim you might be able to "+"\n             take it down and escape!");
 	}
@@ -178,11 +181,12 @@ function PhoneTossN() {
 	clear();
 	print("\nYou put your phone back into your pocket, probably for the best. Besides, maybe another plan would be better.");
 	print("\n\tPress B to go back");
-	function processInput(){
+	function processInput(input){
 		if (input.toLowerCase() === "b"){
 			UseItem();
 		}
 	}
+	waitForInput(processInput);
 }
 
 function PhoneTossY() {
@@ -190,7 +194,7 @@ function PhoneTossY() {
 	print("\nYou throw the phone, it lands near the creature who was distracted by an owl. The creature then turns around and unknowingly steps on your phone, completely destroying it. Your stomach drops when you realize you not only lost your whole life, but that it was for nothing.");
 	print("\n\tPress B to go back");
 
-	function processInput(){
+	function processInput(input){
 		if (input.toLowerCase() === "b"){
 			Phone = false;
 			UseItem();
@@ -203,7 +207,7 @@ function ShamefulVert() {
 	clear();
 	print("\nYou hold the backpack and break into a (slow) sprint. Panting and out of shape your vision gets blurry but you press on, you get closer and the creature appears to grow, you leap as high as possible and absolutely do not make it. You land so badly you manage to snap your left ankle the wrong way. Crying out in pain the creature looks at you with detached pity. In its eyes you feel as if you were a bug missing a wing and on the edge of its inevitable demise. The creature opts to put you out of your misery and steps on your head to crush your skull. You die quickly and the creature tosses you away as one would do with particularly icky trash.");
 	print("\n\tPress C to continue");
-	function processInput(){
+	function processInput(input){
 		if (input.toLowerCase() === "c"){
 			ShamefulVert2();
 		}
@@ -217,7 +221,7 @@ function ShamefulVert2() {
 	print("\n\tPress R to restart");
 
 	function processInput(){
-		if (input.toLowerCase() === "r"){
+		if (input.toLowerCase(input) === "r"){
 			start();
 		}
 	}
@@ -269,7 +273,7 @@ function DeadMansJacket2(){
 
 function Thunk() {
 	clear();
-	print("\nYou throw the cube, and for what it’s worth, you get a good angle and hit its head, so if nothing else at least you have accuracy… As the cube hit the thing it let out an awful noise, maybe this noise means you defeated it! But after the noise left its mouth it immediately snaps its head in the direction the cube is thrown, toward you. You put on a look of pure terror as its flashlight looking eyes meet yours. You squit due to the brightness but through the squint you see the creature break into a sprint at you. It is impressive, really, at least it is much faster than you could ever go (even in second grade)." + "\nThe creature finally meets you and consumes you, not leaving you any time to shake off your shock and say your goodbyes. But who would you even say bye to in the first place? There is nobody here for you, nor was there ever. Maybe the stars? They are the only presences in your life that have ever been there for you.");
+	print("\nYou throw the cube, and for what it’s worth, you get a good angle and hit its head, so if nothing else at least you have accuracy… As the cube hit the thing it let out an awful noise, maybe this noise means you defeated it! But after the noise left its mouth it immediately snaps its head in the direction the cube is thrown, toward you. You put on a look of pure terror as its flashlight looking eyes meet yours. You squint due to the brightness but through the squint you see the creature break into a sprint at you. It is impressive, really, at least it is much faster than you could ever go (even in second grade)." + "\nThe creature finally meets you and consumes you, not leaving you any time to shake off your shock and say your goodbyes. But who would you even say bye to in the first place? There is nobody here for you, nor was there ever. Maybe the stars? They are the only presences in your life that have ever been there for you.");
 	print("\n\tPress C to continue");
 
 	function processInput(input){
@@ -498,7 +502,7 @@ function Clearing() {
 	if (Jacket == false && Damaged == false && ClearInspectV == true){
 		print("\n\t7-    Maybe you can just push through the thorns, people can survive much worse");
 	}
-	if (Jacket == true && ClearInspectV == true){
+	if (Stick == false && Jacket == true && ClearInspectV == true){
 		print("\n\t7-   Maybe you can use the jacket to shield yourself through the thorns, it " + "\n             might get scratched up but it seems thick enough to save you from pain");
 	}
 	if (Damaged == true && ClearInspectV == true && Jacket == false){
@@ -541,7 +545,7 @@ function Clearing() {
 	    else if (Jacket == false && Damaged == false && ClearInspectV == true && input.toLowerCase() === "7"){
 		NoJacketThorns();
 	    }
-	    else if (Jacket == true && ClearInspectV == true && input.toLowerCase() === "7"){
+	    else if (Stick == false && Jacket == true && ClearInspectV == true && input.toLowerCase() === "7"){
 		JacketThorns();
 	    }
 	    else if (Jacket == false && Damaged == true && ClearInspectV == true && input.toLowerCase() === "7"){
@@ -575,7 +579,6 @@ function NoJacketThorns() {
 	clear();
 	print("\nYou start to crawl through the sharp thorns, the unforgiving barbs tearing at your skin and clothes, you feel an amount of pain that you feel is disproportionate to simple thorns. This feels like thousands of knives are ruthlessly being dragged across your skin, you are only a few feet in and are already bleeding from unreasonably deep cuts, you still can’t see the end of the thorns so you decide to turn around and once you are out you can fully assess the damage.");
 	print("\n\tPress O to return to options");
-
 	Damaged = true;
 
 	function processInput(input){
@@ -684,7 +687,13 @@ function BeatenPath2() {
 
 function BeatenPath3() {
         clear();
-        print("\nYou have gotten further down the path and hear the wind through the leaves once more. (if w/o jacket. You get chilly, if only you had something to warm you up. Either way it is not that bad.)(If w/ jacket. You feel a chill in the wind, thankfully you have a warm jacket.). After a bit you find that the whooshing of the wind in the trees is beginning to sound familiar, you must be going crazy, which is less surprising to you than it should be, but maybe the insanity was already a long time coming. Maybe your mom was right, you always were destined to fail. The path goes on, will you?");
+	if (Jacket == false){
+        print("\nYou have gotten further down the path and hear the wind through the leaves once more. You get chilly, if only you had something to warm you up. Either way it is not that bad. After a bit you find that the whooshing of the wind in the trees is beginning to sound familiar, you must be going crazy, which is less surprising to you than it should be, but maybe the insanity was already a long time coming. Maybe your mom was right, you always were destined to fail. The path goes on, will you?");
+	}
+	if (Jacket == true){
+	print("\nYou have gotten further down the path and hear the wind through the leaves once more. You feel a chill in the wind, thankfully you have a warm jacket. After a bit you find that the whooshing of the wind in the trees is beginning to sound familiar, you must be going crazy, which is less surprising to you than it should be, but maybe the insanity was already a long time coming. Maybe your mom was right, you always were destined to fail. The path goes on, will you?");
+	}
+
         print("\n\tPress W to walk" + "\n\tPress B to go back");
 
         function processInput(input){
@@ -768,14 +777,77 @@ function BeatenPath8() {
         print("\n\tPress W to walk" + "\n\tPress B to go back");
 
         function processInput(input){
-                if (input.toLowerCase() === "w"){
+                if (Loop < 10 && input.toLowerCase() === "w"){
                         BeatenPath2();
                 }
+		else if (Loop == 10 && Damaged == false && input.toLowerCase() === "w"){
+			console.log("no ow");
+			LoopedUnhurt();
+		}
+		else if (Loop == 10 && Damaged == true && input.toLowerCase() === "w"){
+			console.log("ow");
+			LoopedHurt();
+		}
                 else if (input.toLowerCase() === "b"){
                         Clearing();
                 }   
-        }     
+        }
+	Loop = Loop + 1;
+
         waitForInput(processInput);
+}
+
+function LoopedHurt() {
+	clear()
+	print("You continue down the path, following it faithfully. As you see the same thing again and again and again you start getting worn out, you fear what might happen if you stop but you don’t think you could keep going. Soon you collapse to the ground, your wounds from the thorns start hurting worse than when you got them. You watch in horror as the darkness between the trees seep into your wounds, becoming a part of you that you would never like to see. You are now forced to watch as your body painfully contorts into a beast-like shape. Even with all that is happening, you can do nothing to stop it, you can’t move, you can only think. Stuck with your thoughts until your human consciousness gets pushed further and further back into your cage, your memories and humanity slowly being replaced with animalistic instinct and a need to eat flesh. You have become the beast and you are unable to stop from hurting others, in fact, you kind of want to hurt them now. You are so, so hungry. You must feed. You must feed. You must feed. You must feed. Feed until your insatiable hunger is quelled. Feed until your end.");
+	print("\n\tPress C to continue");
+
+	function processInput(input){
+		if (input.toLowerCase() === "c"){
+			LoopedHurt2();
+		}
+	}
+	waitForInput(processInput);
+
+}
+
+function LoopedHurt2() {
+	clear();
+	print("\nENDING???" + "\nYou have become what is most feared, soon you will not be able to hear me, you have lost the only thing separating man from beast. At least one thing is true though, you have now escaped these woods, over to something much worse, but you have escaped the forest. Though, can you ever escape your body? Soon your consciousness will leave and you will not be able to worry about such things like escape, morals, or freedom, either way, this might be the closest to true freedom you may be able to get. Goodbye, friend.");
+	print("\n\tPress R to restart");
+	
+	function processInput(input){
+		if (input.toLowerCase() === "r"){
+			start();
+		}
+	}
+	waitForInput(processInput);
+}
+
+function LoopedUnhurt() {
+	clear();
+	print("\nYou keep circling, you only look ahead towards an ever further goal, one that is only of imagination. You’ve circled 10 times already, your endurance is strong, stronger than most, but it gave in once it truly mattered. There was never an end to this, this path was the siren's call at which you, the sailor, will fall. The only hope for escape that this path has held was to escape yourself, to escape into the loving arms of the stars, or to the endless nothing in between, or maybe even somewhere else, somewhere much better. Somewhere much worse. One thing is certain though, as much as you try to evade it, the end always will find you. Death will always follow, it takes on whatever form is fitting. The outfit of today is exhaustion. Even in your time of need, your body failed you. You have failed, and hope has done nothing but hurt you.");
+	print("\n\tPress C to continue");
+
+	function processInput(input){
+		if (input.toLowerCase() === "c"){
+			LoopedUnhurt2();
+		}
+	}
+	waitForInput(processInput);
+}
+
+function LoopedUnhurt2() {
+	clear();
+	print("\nBAD ENDING: ROUND AND ROUND" + "\nYou saw the exact same things ten times, like, not a single difference, and you somehow didn’t notice. Damn, I didn’t know you were that unobservant, like seriously, ten times. Ten times you saw the same thing and didn’t gather that it was, in fact, the same thing. You suck so much at survival that I’m honestly impressed that you didn’t get a more painful death. Seriously, like, wow, you really are terrible at this.");
+	print("\n\tPress R to restart");
+
+	function processInput(input){
+		if (input.toLowerCase() === "r"){
+			start();
+		}
+	}
+	waitForInput(processInput);
 }
 
 function Unwritten(){
@@ -843,6 +915,7 @@ function start(){
 	AteKey = false;
 	Damaged = false;
 	Stick = false;
+	Loop = 0;
 	clear();
     print("Open your eyes. Enter to open your eyes.");
 
