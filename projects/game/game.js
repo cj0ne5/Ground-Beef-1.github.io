@@ -8,11 +8,11 @@ let ClearInspectV = false;
 let ClearInspected = false;
 let Key = false;
 let Backpack = false;
-let CubePaths = false;
 let AteKey = false;
 let Damaged = false;
 let Stick = false;
 let Loop = 0;
+let Cubed = false;
 //Declare your other global variables here
 
 
@@ -220,7 +220,7 @@ function ShamefulVert2() {
 	print("\nBAD ENDING: A VERTICAL TO BE ASHAMED OF" + "\nYeesh, not only can you not run, but you also can’t jump. Seeing as you also lack reason and your life now, what do you even have? Like talent or skill? I almost feel bad. Almost.");
 	print("\n\tPress R to restart");
 
-	function processInput(){
+	function processInput(input){
 		if (input.toLowerCase(input) === "r"){
 			start();
 		}
@@ -493,9 +493,13 @@ function Clearing() {
         "\n\n\t1-   Give up, this clearing is your new home and the trees the harbingers of your fate" 
 	    + "\n\t2-   Inspect the far path with worn stone leading around a bend" + "\n\t3-   Inspect the beaten path to your left");
 		print("\t4-   Inspect the clearing, there’s gotta be something, right?");
-	if (Cube == false && ClearInspectV == true){
+	if (Cubed == false && ClearInspectV == true){
 		print("\n\t5-   Inspect the shiny thing to your right");
 	}
+	else if (Cubed == true && ClearInspectV == true){
+		print("\n\t5-   Inspect the paths near the cube");
+	}
+
 	if ((Backpack == false || Key == false) && ClearInspectV == true){
 		print("\n\t6-   Inspect the object from behind the bush");
 	}
@@ -531,7 +535,12 @@ function Clearing() {
 		}
 	}
 	else if (input.toLowerCase() === "5"){
-		CubeInspect();
+		if (Cubed == true){
+			CubePath();
+		}
+		else if (Cubed == false){
+			CubeInspect();
+		}
 	    }
 	    else if (Backpack == false && Key == false && ClearInspectV == true && input.toLowerCase() === "6"){
 		BushInspect();
@@ -620,12 +629,32 @@ function BushInspect(){
 	}
 	waitForInput(processInput);
 }
+function CubePath() {
+	clear();
+	Unwritten();
+}
 
 function CubeInspect() {
 	clear();
-	Cube = true;
-	CubePaths = true;
-	Unwritten();
+	print("\nYou go over to the shiny thing, noticing two hidden paths near it, you save that to your memory and brush the leaves and dirt off of it, you see a white cube. You can’t really tell what material it is but it feels like memories. It feels like the warm embrace of your father, it feels like the itchy funeral clothes and the hot tears on your face hoping you would wake up and see your dad. It feels like the sharpness of your mom’s nails as they tear at your skin. It feels like her sharp words, tearing down your very being. It feels like the weight of perfection and the collapse of burnout. It feels like the fear of running from home, it feels like the terror of being attacked, the dread of being hunted. It feels like the breath of relief at the roof over your head. It feels like the metal of the telescope on your eye, the hope to see your dad again, the comfort you always wished for but never quite reached. It feels like the stars above, and it feels like you. Will you take it?");
+	print("\n\tPress B to go back");
+	if (Cube == false){
+		print("\n\tPress X to take");
+	}
+
+	Cubed = true;
+
+	function processInput(input){
+		if (input.toLowerCase() === "b"){
+			Clearing();
+		}
+		else if (input.toLowerCase() === "x") {
+			Cube = true;
+			CubeInspect();
+		}
+
+	}
+	waitForInput(processInput);
 }
 
 function ClearInspect3() {
@@ -853,7 +882,7 @@ function LoopedUnhurt2() {
 function Unwritten(){
 	clear();
 	print("\nI have not gotten so far as to add this arc yet, I'm just a guy");
-	print("\n\tPress R to restart");
+	print("\n\tPress R to return");
 
 	function processInput(input){
 		if (input.toLowerCase() === "r"){
@@ -911,11 +940,11 @@ function start(){
 	ClearInspected = false;
 	Key = false;
 	Backpack = false;
-	CubePaths = false;
 	AteKey = false;
 	Damaged = false;
 	Stick = false;
 	Loop = 0;
+	Cubed = false;
 	clear();
     print("Open your eyes. Enter to open your eyes.");
 
