@@ -1,5 +1,4 @@
-let gameActive = true; //this variable is required. 
-                       //to stop the game, set it to false.
+let gameActive = true; 
 let Jacket = false;
 let BendInspected = false;
 let Phone = true;
@@ -13,14 +12,6 @@ let Damaged = false;
 let Stick = false;
 let Loop = 0;
 let Cubed = false;
-//Declare your other global variables here
-
-
-//If you need, add any "helper" functions here
-
-
-//Make one function for each location:w
-
 
 function StonePath() {
 	clear();
@@ -233,10 +224,6 @@ function KeyToss() {
 	print("\nYou throw the key over and immediately duck behind a bush to watch as the creature investigates. As it sniffs the key you feel a pang of hope in your chest, maybe this is what you needed to do! The creature continues to sniff then seems to make a decision, and then swallows the key whole. Your heart drops as you realize that key could have been actually helpful and not a metallic snack.");
 	print("\nYou just lost the key. That was kinda dumb.");
 	print("\n\tPress B to go back");
-	//add no key variable, which triggers event upon finding locked door
-	//and also erases this option, so the option DNE if you have no key
-	//or if you have noKey variable, noKey variable erases key variable
-	//and adds itself
 	function processInput(input){
 		if (input.toLowerCase() === "b"){
 			Key = false;
@@ -926,11 +913,6 @@ function Quitter2() {
 }
 
 
-
-
-//finally, make sure you customize this to tell it what should happen at the
-//very start. For this simple example, any input will bring you
-//to locationA
 function start(){
 	Jacket = false;
 	BendInspected = false;
