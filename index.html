@@ -4,8 +4,153 @@
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
 <style>
 body{background-color: #000000;
+	margin: 0;
+	padding: 0;
+}
+#hero{
+	text-align: center;
+	grid-area: main;
+	font-size: 50px;
+	background-image: radial-gradient(#1A1A1A, black);
+	/*
+	background-image: linear-gradient(to bottom, black, #1A1A1A)
+	*/
+}
+#gridhero{
+	display: grid;
+	height: 100vh;
+	grid:
+'topbar'1fr
+'main'13fr
+	/1fr;
+}
+#logo {
+	grid-area:logo;
+	background-color: black;
+	border-bottom: 2px solid #2e2e2e;
+	color: white;
+	display: flex;
+	align-items: center;
+	font-size: 30px;
+	font-family: Courier;
+}
+.topbar {
+	grid-area: topbar;
+	background-image: linear-gradient(to right, );
+	display: grid;
+	grid:
+	'gap logo gapnav navbar gap2'1fr
+	/1fr 4fr 1fr 9fr 1fr;
+}
+#gap{
+	grid-area: gap;
+	background-color: #256130;
+	border-bottom: 4px solid #004200;
+}
+#gapnav{
+	grid-area: gapnav;
+	background-color: #256130;
+	border-bottom: 4px solid #004200;
+}
+#gap2{
+	grid-area: gap2;
+	background-color: #256130;
+	border-bottom: 4px solid #004200;
+}
+.navbar{
+	grid-area: navbar;
+	background-color: #256130;
+	border-bottom:4px solid #004200;
+	
 }
 
+/*
+#about {
+	grid-area:about;
+        background-color: #256130;
+	border-bottom: 4px solid #004200;
+	color: #FFFFA9;
+	display: flex;
+	align-items: center;
+	font-size: 30px;
+	font-family: Courier;
+}
+#updates{
+	grid-area:updates;
+        background-color: #256130;
+	border-bottom: 4px solid #004200;
+	color: #FFFFA9;
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+        font-family: Courier; 
+}
+#support{
+	grid-area:support;
+        background-color: #256130;
+	border-bottom: 4px solid #004200;
+	color: #FFFFA9;                                                       
+        display: flex;                                                          
+        align-items: center;                                                    
+        font-size: 30px;                                                        
+        font-family: Courier; 
+}
+#other {
+	grid-area:other;
+        background-color: #256130;
+	border-bottom: 4px solid #004200;
+	 color: #FFFFA9;
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+        font-family: Courier;
+}
+#buzzblog {
+	grid-area:buzzblog;
+        background-color: #256130;
+	border-bottom: 4px solid #004200;
+	 color: #FFFFA9;
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+        font-family: Courier;
+}
+
+#game {
+	grid-area:game;
+        background-color: #256130;
+	border-bottom: 4px solid #004200;
+	 color: #FFFFA9;
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+        font-family: Courier;
+}
+*/
+#floating{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color:#256130;
+}
+.theitem{
+	float: right;
+}
+.thelink{
+	display: block;
+	color: #FFFFA9;
+	text-align: center;
+	align-items: center;
+	padding: 14px 16px;
+	font-family: Courier;
+	font-size: 20px;
+	text-decoration: none;
+}
+
+.thelink:hover {
+		background-color: #1B502F;
+}
 
 </style>
 <script src="js/validate.js" id="willthiswork">
@@ -15,21 +160,23 @@ body{background-color: #000000;
 <title>Homepage</title>
 </head>
 <body>
-	<div id="textprobably">
-	<h1>Noctuae Website</h1>
-	<p>This website will have progress updates for our comic, it will<br>
-	have character reference sheets, and anything else related to the<br>
-	Noctuae comic</p>
-	<p><q>The past is never dead, it is not even past</q>- Rusty Lake</p>
-	<!--I drew this-->
-	<img src="images/AdderDeadAt27-large.PNG"
-     alt="Adder is dead at 27"
-     srcset="images/AdderDeadAt27-small.PNG 480w,
-             images/AdderDeadAt27-medium.PNG 800w,
-             images/AdderDeadAt27-large.PNG 1200w"
-     sizes="(max-width: 480px) 95vw,
-            (max-width: 800px) 45vw,
-            30vw">
+<div id="gridhero">
+	<div class="topbar">
+	<div id="gap"></div>
+	<div id="logo">Noctuae website</div>
+	<div id="gapnav"></div>
+	<div class="navbar">
+		<ul id="floating">
+			<li class="theitem"><a href="#works" class="thelink">work</a></li>
+			<li class="theitem"><a href="#works" class="thelink">work2</a></li>
+		</ul>
 	</div>
+	<div id="gap2"></div>
+	</div>
+<div id="hero"></div>
+	</div>
+<div id="about">
+	<h1 id="works"><a href="../projects/game/index.html">My game</a><h1>
+</div>
 </body>
 </html>

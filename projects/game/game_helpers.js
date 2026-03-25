@@ -7,6 +7,27 @@ function print(text) {
     output.appendChild(line);
     output.scrollTop = output.scrollHeight;
 }
+
+function addCss(fileName) {
+	
+	var link = document.head;
+	var link = document.reateElement("link");
+
+	link.type = "text/css";
+	link.rel = "stylesheet";
+	link.href = fileName;
+
+	head.appendChild(link);
+}
+
+function div(ID) {                                                          
+    const output = document.getElementById('output');                           
+    const line = document.createElement('div');                                 
+    line.id = ID;                                     
+    output.appendChild(line);                                                   
+    output.scrollTop = output.scrollHeight;                                     
+}
+
 /*
 function Pick1(text, click) {
     const output = document.getElementById('output')         

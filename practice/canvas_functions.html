@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang  = "en">
+	<head>
+		<title>Canvas w functions</title>
+	</head>
+	<body>
+		<h1>Canvas but evil(er)</h1>
+		<canvas width=800 height=800 id="myCanvas">
+		</canvas>
+		<script>
+		const canvas = document.getElementById("myCanvas");
+		const ctx = canvas.getContext("2d");
+
+		ctx.fillRect(100,100,100,100)
+		//fill rect with color (knew it)
+
+		function fillRectWithColor(x,y,width,height,color){
+		ctx.fillStyle=color;
+		ctx.fillRect(x,y,width,height);
+		}
+
+		fillRectWithColor(200,200,200,200,"red");
+
+		//fillCiWCo
+		function fillCiWCo(x,y,r,color){
+			ctx.fillStyle=color;
+			ctx.beginPath();
+			ctx.arc(x,y,r,0,2*Math.PI);
+			ctx.fill();
+		}
+		fillCiWCo(300,300,30,"blue");
+
+		//functionception
+		function drawSnowman(x,y){
+		fillCiWCo(x,y-60,20,"gray");
+		fillCiWCo(x,y,50,"gray");
+		fillCiWCo(x,y+110,75,"gray");
+		}
+
+		drawSnowman(400,400);
+		
+
+
+		</script>
+	</body>
+</html>
