@@ -173,12 +173,13 @@ border-image: conic-gradient(#FF00AA, #FFA902, #AAFF02, #05AAFF, #AA01FF);
 .dropdown:hover .dropdown-content{
 	display: block;
 }
-.dropdown-content #colorline{
+.dropdown-content .colorline{
 	width:160px;
 	height: 2px;
 	background-color: black;
 	background-image: linear-gradient(to left, #FF00AA, #FFA902, #AAFF02, #05AAFF, #AA01FF);
 }
+
 .dropdown #topborder{
 	width:10px;
 	height: 10px;
@@ -207,9 +208,11 @@ border-image: conic-gradient(#FF00AA, #FFA902, #AAFF02, #05AAFF, #AA01FF);
 	</button>
 	<div id="topborder"></div> 
 	<div class="dropdown-content">
+		<div class="colorline"></div>
 		<a class="aboutc" href="#works">About Our Comic</a>
-		<div id="colorline"></div>
+		<div class="colorline"></div>
 		<a class="sheets" href="#works">Character Sheets</a>
+		<div class="colorline"></div>
 	</div>
 </div>
 <a href="#works" class="link">About</a>
