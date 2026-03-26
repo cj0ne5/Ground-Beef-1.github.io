@@ -147,8 +147,7 @@ body{background-color: #000000;
 	min-width: 160px;
 	overflow: auto;
 	border: 10px solid transparent;
-	border-image: conic-gradient(#FF00AA, #FFA902, #AAFF02, #05AAFF, #AA01FF);
-
+border-image: conic-gradient(#FF00AA, #FFA902, #AAFF02, #05AAFF, #AA01FF);
 	box-shadow: 0px 8px 16px #6902db;
 	z-index: 1;
 }
@@ -157,23 +156,33 @@ body{background-color: #000000;
 	float: none;
 	color: black;
 	background-color: white;
-	outline: 1px solid green;
 	padding: 14px;
 	text-decoration: none;
 	display: block;
 	text-align: left;
 }
 .dropdown-content .aboutc:hover{
-	background-color: #692008;
+	background-color: black;
 	color: white;
 }
 .dropdown-content .sheets:hover{
-	background-color: blue;
+	background-color: black;
 	color: white;
 }
 
 .dropdown:hover .dropdown-content{
 	display: block;
+}
+.dropdown-content #colorline{
+	width:160px;
+	height: 2px;
+	background-color: black;
+	background-image: linear-gradient(to left, #FF00AA, #FFA902, #AAFF02, #05AAFF, #AA01FF);
+}
+.dropdown #topborder{
+	width:10px;
+	height: 10px;
+	background-color: transparent;
 }
 
 </style>
@@ -196,8 +205,10 @@ body{background-color: #000000;
 <button class="dropbtn">Comic
 	<i class="arrow down"></i>
 	</button>
+	<div id="topborder"></div> 
 	<div class="dropdown-content">
 		<a class="aboutc" href="#works">About Our Comic</a>
+		<div id="colorline"></div>
 		<a class="sheets" href="#works">Character Sheets</a>
 	</div>
 </div>
