@@ -1,3 +1,11 @@
 h1, p, img { color: #FFFFFF;}
 .willthiswork {color: #FFFFFF;}
 
+*{
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;
+}
+
+::-webkit-scrollbar{
+	display: none;
+}

@@ -14,6 +14,8 @@ ctx = canvas.getContext("2d");
 
 //fill in code for canvas2 here
 
+for(let y = 0;)
+
 canvas = document.getElementById("canvas3");
 ctx = canvas.getContext("2d");
 

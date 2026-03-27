@@ -7,6 +7,10 @@ body{background-color: #000000;
 	margin: 0;
 	padding: 0;
 }
+body {
+	overflow: overlay;
+}
+
 #about{
 	background-color: black;
 }
@@ -24,80 +28,14 @@ body{background-color: #000000;
 	text-decoration: underline;
 	background-color: transparent;
 }
-
-#hero{
-	text-align: center;
-	grid-area: main;
-	font-size: 50px;
-	background-color: #000013;
-	background-image: linear-gradient(to bottom,#000011, #212127)
-
-		/*#000013, #21212e)*/
-}
 #gridhero{
 	display: grid;
 	height: 100vh;
 	grid:
-'topbar'1fr
+'navbar'1fr
 'main'13fr
 	/1fr;
 }
-#logo {
-	grid-area:logo;
-	color: white;
-	display: flex;
-	align-items: center;
-	font-size: 30px;
-	font-family: Courier;
-}
-.topbar {
-	grid-area: topbar;
-	background-image: linear-gradient(to right, #70223b, #6e3c16, #234036, #233940, #40232c);
-	display: grid;
-	grid:
-	'gap logo gapnav navbar gap2'1fr
-	/1fr 4fr 1fr 9fr 1fr;
-}
-#gap{
-	grid-area: gap;
-}
-#gapnav{
-	grid-area: gapnav;
-	/*background-color: #256130;
-	border-bottom: 4px solid #004200;*/
-}
-#gap2{
-	grid-area: gap2;
-}
-.navbar{
-	grid-area: navbar;
-	
-}
-/*
-#floating{
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-}
-.theitem{
-	float: right;
-}
-.thelink{
-	display: block;
-	color: #FFFFA9;
-	text-align: center;
-	align-items: center;
-	padding: 14px 16px;
-	font-family: Courier;
-	font-size: 20px;
-	text-decoration: none;
-}
-
-.thelink:hover {
-		background-color: #1B502F;
-}
-*/
 .arrow{
 	border: solid white;
 	border-width: 0 3px 3px 0;
@@ -110,7 +48,15 @@ body{background-color: #000000;
 }
 
 .navbar{
+	grid-area: navbar;
 	overflow: hidden;
+	background-image: linear-gradient(to right, #70223b, #6e3c16, #234036, #233940, #40232c);
+	background-color: transparent;
+	position: fixed;
+	top: 0;
+	height: 60px;
+	width: 100%;
+	z-index: 2;
 }
 .navbar .link{
 	float: right;
@@ -118,9 +64,18 @@ body{background-color: #000000;
 	font-family: Courier;
 	color: #FFFFA9;
 	text-align: center;
-	padding: 14px 16px;
+	padding: 18px 16px;
 	text-decoration: none;
 }
+.noscroll::-webkit-scrollbar {
+    display: none;
+}
+
+.noscroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;  
+}
+
 .dropdown{
 	float: right;
 	overflow: hidden;
@@ -131,7 +86,7 @@ body{background-color: #000000;
 	border: none;
 	outline: none;
 	color: #FFFFA9;
-	padding: 14px 16px;
+	padding: 18px 16px;
 	font-family: Courier;
 	margin: 0;
 	background-color: transparent;
@@ -143,13 +98,13 @@ body{background-color: #000000;
 
 .dropdown-content {
 	display: none;
-	position: absolute;
+	position: fixed;
 	min-width: 160px;
 	overflow: auto;
 	border: 10px solid transparent;
 border-image: conic-gradient(#FF00AA, #FFA902, #AAFF02, #05AAFF, #AA01FF);
 	box-shadow: 0px 8px 16px #6902db;
-	z-index: 1;
+	z-index: 3;
 }
 
 .dropdown-content a{
@@ -182,25 +137,44 @@ border-image: conic-gradient(#FF00AA, #FFA902, #AAFF02, #05AAFF, #AA01FF);
 
 .dropdown #topborder{
 	width:10px;
-	height: 10px;
+	height: 4px;
 	background-color: transparent;
 }
+#hero{
+        text-align: center;
+        padding: 16px;
+        margin-top: 60px;
+        grid-area: main;
+        font-size: 50px;
+	position: relative;
+	z-index:1;
+        background-color: transparent;
+        background-image: linear-gradient(to bottom,#000011, #212127)
+}
+#otworks{
+	padding-right:40px;
+}
+
 
 </style>
-<!-- <script src="js/validate.js" id="willthiswork">
+
+<!--<script 
+	src="js/validate.js" id="willthiswork">
+
 </script> -->
 
 	<link rel="stylesheet" href="style.css">
 <title>Noctuae website</title>
 </head>
 <body>
+<div class="noscroll">
 <div id="gridhero">
-	<div class="topbar">
+<!--	<div class="topbar">
 	<div id="gap"></div>
 	<div id="logo">Noctuae website</div>
-	<div id="gapnav"></div>
+	<div id="gapnav"></div> -->
 	<div class="navbar">
-<a href="#works" class="link">Other Works</a>
+<a href="#works" class="link" id="otworks">Other Works</a>
 <a href="#works" class="link">Updates</a>
 <div class="dropdown">
 <button class="dropbtn">Comic
@@ -218,12 +192,12 @@ border-image: conic-gradient(#FF00AA, #FFA902, #AAFF02, #05AAFF, #AA01FF);
 <a href="#works" class="link">About</a>
 		</ul>
 	</div>
-	<div id="gap2"></div>
-	</div>
 <div id="hero"></div>
 	</div>
+	</div>
 <div id="about">
-	<h1 id="works"><a id="gamelink" href="projects/game/index.html">My game</a><h1>
+	<h1 id="works"><a target="_blank" id="gamelink" href="projects/game/index.html">My game</a><h1>
+</div>
 </div>
 </body>
 </html>
